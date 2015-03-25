@@ -1,0 +1,9 @@
+;Write a line to a file with information about the user logon
+
+$uptime=@TICKS/1000 ;convert to seconds
+$uptime=$uptime/60 ;convert seconds to minutes
+
+$share="\\yourserver\logontrace$"
+
+IF Open(1,$share+"\"+@USERID+".txt",5)  = 0
+   $x = WriteLine(1,@USERID+","+@WKSTA+","+$uptime+","+@IPAddress0+","+%CLIENTNAME%+","+%SESSIONNAME%+","+@DATE+","+@TIME+","+@FULLNAME+@CRLF)
