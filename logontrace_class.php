@@ -28,9 +28,13 @@ class logontrace
 		}
 		return $users;
 	}
+	public function filename($user)
+	{
+		return $this->filepath.'/'.$user.'.txt';
+	}
 	function getlogons($user)
 	{
-		if(!file_exists($file=$this->filepath.'/'.$user.'.txt'))
+		if(!file_exists($this->filename($user)))
 			return false;
 		$logondata=trim(file_get_contents($file));
 		//$logondata=utf8_encode(trim(file_get_contents($file)));
