@@ -35,9 +35,9 @@ class logontrace
 		$logondata=trim(file_get_contents($file));
 		//$logondata=utf8_encode(trim(file_get_contents($file)));
 		$fieldkeys=array_keys($this->fields);
-		foreach (explode("\r\n",$logondata) as $key=>$line)
+		foreach (explode("\n",$logondata) as $key=>$line)
 		{
-			$logon=array_combine($fieldkeys,explode(',',$line));
+			$logon=array_combine($fieldkeys,explode(',',trim($line)));
 			$logon['timestamp']=strtotime($logon['date'].' '.$logon['time']);
 			$logons[]=$logon;
 		}
