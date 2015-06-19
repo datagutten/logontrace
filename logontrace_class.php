@@ -34,7 +34,7 @@ class logontrace
 	}
 	function getlogons($user)
 	{
-		if(!file_exists($this->filename($user)))
+		if(!file_exists($file=$this->filename($user)))
 			return false;
 		$logondata=trim(file_get_contents($file));
 		//$logondata=utf8_encode(trim(file_get_contents($file)));
